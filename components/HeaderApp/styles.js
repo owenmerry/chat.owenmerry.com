@@ -23,6 +23,7 @@ font-size:16px;
     .button{
         padding: 10px 30px;
         background-color:#EA2B74;
+        background-image: linear-gradient(#e22c45, #EA2B74);
         border-radius: 26px;
         display:inline-block;
         cursor: pointer;

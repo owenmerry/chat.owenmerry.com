@@ -63,6 +63,7 @@ background-color: #282828;
         .message-me{
             text-align:right;
             align-self:flex-end;
+            background-image: linear-gradient(#e22c45, #EA2B74);
         }
         .message-other{
             text-align:left;
@@ -94,6 +95,7 @@ background-color: #282828;
         padding: 10px 30px;
         margin: 0px 5px;
         background-color:#EA2B74;
+        background-image: linear-gradient(#e22c45, #EA2B74);
         border-radius: 26px;
         display:inline-block;
         cursor: pointer;

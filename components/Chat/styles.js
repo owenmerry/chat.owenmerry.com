@@ -44,6 +44,7 @@ export const ChatStyle = styled.div`
         .message-me{
             text-align:right;
             align-self:flex-end;
+            background-image: linear-gradient(#e22c45, #EA2B74);
         }
         .message-other{
             text-align:left;
@@ -77,6 +78,7 @@ export const ChatStyle = styled.div`
             .button{
                 padding: 15px 40px;
                 background-color:#EA2B74;
+                background-image: linear-gradient(#e22c45, #EA2B74);
                 color:white;
                 border-radius: 26px;
                 display:inline-block;
