@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import SplashPage from '../components/SplashPage';
+import RoomPage from '../components/RoomPage';
 
 export default function Public() {
 
@@ -15,7 +15,7 @@ export default function Public() {
             a{text-decoration: none;}
         `}
       </style>
-      <SplashPage />
+      <RoomPage />
     </div>
   )
 }
