@@ -105,7 +105,8 @@ background-color: #282828;
 
   /* mobile styles */
   @media only screen and (max-width: 720px) {
-   
+    align-items:normal;
+    margin-top:50px;
     }
 
 `;

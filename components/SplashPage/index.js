@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { SplashPageStyle } from './styles';
 import Link from 'next/link';
+import { motion } from "framer-motion";
 
 
 const SplashPage = props => {
@@ -12,6 +13,24 @@ const SplashPage = props => {
     {type:'me', message: 'Nice 👍'},
     {type:'other', message: 'Choose to join the public chat room or join your own room and share with friends'},
   ];
+
+  //animations
+  const variants = {
+    start: i => ({
+      opacity: 0, 
+      y:-10,
+      transition: {
+        delay: i * 1,
+      },
+    }),
+    end: i => ({
+      opacity: 1, 
+      y:0,
+      transition: {
+        delay: i * .7,
+      },
+    }),
+  }
 
   useEffect(() => {
 
@@ -38,7 +57,14 @@ const SplashPage = props => {
             <div className='chat-messages'>
               <div className='message-list'>
               {startChatMessages.map((item, key) => (
-                <div key={key} className={getClassName(item.type)}>{item.message}</div>
+                <motion.div 
+                  custom={key}
+                  initial="start"
+                  animate="end"
+                  variants={variants}
+                  key={key} 
+                  className={getClassName(item.type)}
+                >{item.message}</motion.div>
               ))}
               </div>
             </div>

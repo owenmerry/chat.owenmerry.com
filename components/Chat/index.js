@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChatStyle } from './styles';
 import { Wrapper } from 'owenmerry-designsystem';
+import { motion } from "framer-motion";
 
 
 const Chat = props => {
@@ -44,6 +45,18 @@ const Chat = props => {
   };
 
 
+  //animations
+  const variants = {
+    start: {
+      opacity: 0, 
+      y:-10,
+    },
+    end: {
+      opacity: 1, 
+      y:0,
+    },
+  }
+
 
     return (
         <ChatStyle>
@@ -51,7 +64,13 @@ const Chat = props => {
             <Wrapper>
               <div ref={refMessageList} className='message-list'>
               {stateMessages.map((item, key) => (
-                <div key={key} className={getClassName(item.type)}>{item.message}</div>
+                <motion.div 
+                  initial="start"
+                  animate="end"
+                  variants={variants}
+                  key={key} 
+                  className={getClassName(item.type)}
+                >{item.message}</motion.div>
               ))}
               <div ref={refMessageListEnd} />
               </div>
