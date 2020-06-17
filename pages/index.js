@@ -11,6 +11,7 @@ export default function Public() {
             font-family: 'Source Sans Pro', sans-serif;
             margin:0px;
             padding:0px;
+            background-color: #282828;
             }
             a{text-decoration: none;}
         `}
