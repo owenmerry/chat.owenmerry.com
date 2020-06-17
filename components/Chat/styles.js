@@ -83,6 +83,7 @@ export const ChatStyle = styled.div`
                 border:solid 0px #dcdcdc;
                 font-size: 16px;
                 width:100%;
+                height:50px;
             }
         }
         .button-box{
