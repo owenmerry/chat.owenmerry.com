@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const HeaderAppStyle = styled.div`
 
 /* general */
+position:fixed;
+top:0px;
+width:100%;
 background-color: #282828;
 color:white;
 font-size:16px;

@@ -52,6 +52,8 @@ export default function Home() {
             font-family: 'Source Sans Pro', sans-serif;
             margin:0px;
             padding:0px;
+            overflow:none;
+            height:100%;
             }
             a{text-decoration: none;}
         `}

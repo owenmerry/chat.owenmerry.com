@@ -4,10 +4,19 @@ export const ChatStyle = styled.div`
 
 /* general */
 .chat-messages{
-    height: calc(100vh - 85px - 96px);
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+
+    position:fixed;
+    top:0px;
+    width:100%;
+    height: calc(100% - 85px - (96px + var(--safe-area-inset-bottom)));
     background-color: #F8F8F8;
     font-size:16px;
     overflow-y: scroll;
+    margin-top:85px;
+    margin-bottom:calc(96px + var(--safe-area-inset-bottom));
+    box-sizing: border-box;
     .message-list{
         padding:15px;
         display:flex;
@@ -57,6 +66,9 @@ export const ChatStyle = styled.div`
     }
 }
 .chat-box{
+    position:fixed;
+    bottom:0px;
+    width:100%;
     background-color:white;
     box-shadow: rgba(0,0,0,0.15) 0px 0px 20px;
     .chat-box-content{
@@ -93,7 +105,6 @@ export const ChatStyle = styled.div`
 
   /* mobile styles */
   @media only screen and (max-width: 720px) {
-   
-    }
+}
 
 `;

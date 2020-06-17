@@ -6,11 +6,14 @@ import { Wrapper } from 'owenmerry-designsystem';
 const Chat = props => {
 
   const refMessage = useRef();
+  const refMessageList = useRef();
+  const refMessageListEnd = useRef();
   const [stateMessages, setStateMessages] = useState(props.messageList);
 
   useEffect(() => {
     setStateMessages(props.messageList);
     console.log('props changed', props.messageList);
+    scrollBottom();
   },[props.messageList]);
 
   const addMessage = () => {
@@ -34,16 +37,23 @@ const Chat = props => {
     return className;
   };
 
+  const scrollBottom = () => {
+    setTimeout(() => {
+      refMessageListEnd.current.scrollIntoView({ behavior: "smooth" });
+    }, 100 );
+  };
+
 
 
     return (
         <ChatStyle>
           <div className='chat-messages'>
             <Wrapper>
-              <div className='message-list'>
+              <div ref={refMessageList} className='message-list'>
               {stateMessages.map((item, key) => (
                 <div key={key} className={getClassName(item.type)}>{item.message}</div>
               ))}
+              <div ref={refMessageListEnd} />
               </div>
             </Wrapper>
           </div>
