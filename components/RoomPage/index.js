@@ -32,7 +32,8 @@ const RoomPage = props => {
     return className;
   };
   const joinRoom = () => {
-    Router.push('/room/'+ stateRoom);
+    const roomName = stateRoom;
+    Router.push('/room/'+ roomName.toLowerCase());
   };
 
 
