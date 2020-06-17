@@ -30,6 +30,7 @@ export const ChatStyle = styled.div`
             max-width:60%;
             margin-bottom: 5px;
             line-height:20px;
+            word-break: break-word;
         }
         .status-time{
             align-self:center;
