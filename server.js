@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', (messageData) => {
             socket.broadcast.to(socket.room).emit('sendMessage', messageData);
             if(history[socket.room]){
-                history[socket.room].push(messageData);
+                history[socket.room].push({...messageData, time: Date.now()});
             }
     });
     socket.on('joinRoom', (roomData) => {
@@ -33,11 +33,16 @@ io.on('connection', (socket) => {
           history[socket.room] = [];
         }
 
+        //send messages
         socket.broadcast.to(socket.room).emit('sendMessage', {type:'user', message:'User Joined'});
         if (io.sockets.adapter.rooms[socket.room]) {
           io.to(socket.room).emit('users', {userAmount: io.sockets.adapter.rooms[socket.room].length }); 
         }
-        io.to(socket.room).emit('history', {list: history[socket.room] }); 
+
+        //history
+        const historyTimespan = 1000*60*60;
+        const historySend = history[socket.room].filter((item) => item.time > (Date.now() - historyTimespan));
+        socket.emit('history', {list: historySend }); 
     });
 
     socket.on('disconnect', () => {

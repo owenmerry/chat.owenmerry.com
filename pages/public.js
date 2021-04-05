@@ -38,11 +38,20 @@ export default function Home() {
     socket.on('sendMessage', (chatData) => {
       updateMessages(chatData);
     });
+    socket.on('history', (chatData) => {
+      updateHistory(chatData.list);
+    });
   };
   const updateMessages = (addData) => {
     setStateMessages(prevState => [...prevState, addData]);
   }
 
+  const updateHistory = (addData) => {
+    const state = stateMessages;
+    const history = state.concat(addData);
+    //console.log('update history', history);
+    setStateMessages([...history]);
+  };
 
 
   return (

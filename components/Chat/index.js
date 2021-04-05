@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { ChatStyle } from './styles';
 import { Wrapper } from 'owenmerry-designsystem';
 import { motion } from "framer-motion";
+import MenuApp from '../../components/MenuApp';
+import useLongPress from '../../hooks/useLongPress';
 
 
 const Chat = props => {
@@ -44,6 +46,20 @@ const Chat = props => {
     }, 100 );
   };
 
+  const copyText = (text) => {
+    navigator.clipboard.writeText(text).then(function() {
+      console.log('Async: Copying to clipboard was successful!');
+    }, function(err) {
+      console.error('Async: Could not copy text: ', err);
+    });
+  };
+
+
+  const renderLinks = (message) => {
+    const reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
+
+    return message.replace(reg, `<a target='_blank' href='$1$2'>$1$2</a>`);
+  }
 
   //animations
   const variants = {
@@ -70,7 +86,10 @@ const Chat = props => {
                   variants={variants}
                   key={key} 
                   className={getClassName(item.type)}
-                >{item.message}</motion.div>
+                  dangerouslySetInnerHTML={{
+                    __html: renderLinks(item.message)
+                  }}
+                ></motion.div>
               ))}
               <div ref={refMessageListEnd} />
               </div>
