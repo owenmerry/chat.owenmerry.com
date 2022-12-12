@@ -10,7 +10,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "framer-motion": "^1.11.1",
     "next": "9.4.0",
     "owenmerry-designsystem": "^1.0.35",
